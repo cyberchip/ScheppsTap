@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +15,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QSettings *_settings      ;
+    QSettings *_settingsTap   ;
+    QString    _path       ="";
+
+private slots:
+    void updateCaption();
 
 private:
     Ui::MainWindow *ui;
