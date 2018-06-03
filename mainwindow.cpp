@@ -7,6 +7,7 @@
 #include <QPixmap>
 #include <QBitmap>
 #include <QTimer>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,9 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-    _path=QDir::currentPath();
+    _path=QDir::homePath();
     if (_path.left(_path.length()-1)!="/")
-        _path+="/../";
+        _path+="/ScheppsTap/";
 
     _settings   =new QSettings(_path+"configuracoes.ini", QSettings::IniFormat);
     _settingsTap=new QSettings(_path+"tap.ini"          , QSettings::IniFormat);
@@ -49,9 +50,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateCaption()
 {
+    ui->lblLogoCervejaria->clear();
     QPixmap pixmapCervejaria;
     if (pixmapCervejaria.load(_path+"TapLogoCervejaria.png")){
-        ui->lblLogoCervejaria->clear();
         ui->lblLogoCervejaria->setScaledContents( false );
         ui->lblLogoCervejaria->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
         ui->lblLogoCervejaria->setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
@@ -63,9 +64,9 @@ void MainWindow::updateCaption()
         ui->lblLogoCervejaria->setPixmap(pixmapCervejaria);
     }
 
+    ui->lblLogoCerveja->clear();
     QPixmap pixmapCerveja;
     if (pixmapCerveja.load(_path+"TapLogoCerveja.png")){
-        ui->lblLogoCerveja->clear();
         ui->lblLogoCerveja->setScaledContents( false );
         ui->lblLogoCerveja->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
         ui->lblLogoCerveja->setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
@@ -81,4 +82,10 @@ void MainWindow::updateCaption()
     ui->lblNome->setText( _settingsTap->value("Tap/Nome","").toString() );
     ui->lblTipo->setText( _settingsTap->value("Tap/Tipo","").toString() );
     ui->lblOrigem->setText( _settingsTap->value("Tap/Origem","").toString() );
+
+    ui->lblDescricao->setText( _settingsTap->value("Tap/Descricao","").toString() );
+    ui->lblPreco->setText( _settingsTap->value("Tap/Preco","").toString() );
+    ui->lblABV->setText( _settingsTap->value("Tap/ABV","").toString() );
+    ui->lblIBU->setText( _settingsTap->value("Tap/IBU","").toString() );
+
 }

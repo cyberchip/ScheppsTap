@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>588</width>
-    <height>560</height>
+    <width>660</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -136,7 +136,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QLabel" name="label_10">
+         <widget class="QLabel" name="lblDescricao">
           <property name="text">
            <string>&lt;descricao&gt;</string>
           </property>
@@ -157,7 +157,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_16">
+             <widget class="QLabel" name="lblPreco">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -188,7 +188,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_15">
+             <widget class="QLabel" name="lblABV">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -219,7 +219,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_14">
+             <widget class="QLabel" name="lblIBU">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
