@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
                     )
                 );
 
-    if (_settings->value("Tela/FullScreen","Sim").toString().toLower()=="sim"){
+    if (_settings->value("Tela/FullScreen","Sim").toString().toLatin1().toLower()=="sim"){
         this->showFullScreen();
         _settings->setValue("Tela/FullScreen","Sim");
     }else{
@@ -78,14 +78,17 @@ void MainWindow::updateCaption()
         ui->lblLogoCerveja->setPixmap(pixmapCerveja);
     }
 
-    ui->lblCervejaria->setText( _settingsTap->value("Tap/Cervejaria","").toString() );
-    ui->lblNome->setText( _settingsTap->value("Tap/Nome","").toString() );
-    ui->lblTipo->setText( _settingsTap->value("Tap/Tipo","").toString() );
-    ui->lblOrigem->setText( _settingsTap->value("Tap/Origem","").toString() );
+    ui->lblCervejaria->setText( _settingsTap->value("Tap/Cervejaria","").toString().toLatin1() );
+    ui->lblNome->setText( _settingsTap->value("Tap/Nome","").toString().toLatin1() );
+    ui->lblTipo->setText( _settingsTap->value("Tap/Tipo","").toString().toLatin1() );
+    ui->lblOrigem->setText( _settingsTap->value("Tap/Origem","").toString().toLatin1() );
 
-    ui->lblDescricao->setText( _settingsTap->value("Tap/Descricao","").toString() );
-    ui->lblPreco->setText( _settingsTap->value("Tap/Preco","").toString() );
-    ui->lblABV->setText( _settingsTap->value("Tap/ABV","").toString() );
-    ui->lblIBU->setText( _settingsTap->value("Tap/IBU","").toString() );
+    qDebug()<<_settingsTap->value("Tap/Descricao","");
+    qDebug()<<_settingsTap->value("Tap/Descricao","").toString().toLatin1();
+
+    ui->lblDescricao->setText( _settingsTap->value("Tap/Descricao","").toString().toLatin1() );
+    ui->lblPreco->setText( _settingsTap->value("Tap/Preco","").toString().toLatin1() );
+    ui->lblABV->setText( _settingsTap->value("Tap/ABV","").toString().toLatin1() );
+    ui->lblIBU->setText( _settingsTap->value("Tap/IBU","").toString().toLatin1() );
 
 }
